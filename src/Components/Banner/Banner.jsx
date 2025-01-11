@@ -4,7 +4,6 @@ import { ShoppingCart, Info } from 'lucide-react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import './Banner.scss';
 import { CiStar } from 'react-icons/ci';
 import { FaStar } from 'react-icons/fa';
 
@@ -61,7 +60,7 @@ const foodItems = [
 
 const Banner = () => {
   return (
-    <section className="banner">
+    <section className="banner h-screen w-full">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         spaceBetween={0}
@@ -73,39 +72,49 @@ const Banner = () => {
           delay: 5000,
           disableOnInteraction: false,
         }}
-        className="banner__slider"
+        className="banner__slider w-full h-full"
       >
         {foodItems.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="banner__slide" style={{ backgroundImage: `url(${item.image})` }}>
-              <div className="banner__content">
-                <h2 className="banner__title">{item.title}</h2>
-                <p className="banner__description">{item.description}</p>
-                <div className="banner__details">
-                  <p className="banner__price">${item.price.toFixed(2)}</p>
-                  <div className="banner__rating">
+            <div
+              className="banner__slide w-full h-screen bg-cover bg-center flex items-center justify-end relative"
+              style={{ backgroundImage: `url(${item.image})` }}
+            >
+              <div className="banner__content relative z-10 text-white max-w-[500px] mr-20 text-right">
+                <h2 className="banner__title text-7xl font-extrabold mb-4 font-philosopher">
+                  {item.title}
+                </h2>
+                <p className="banner__description text-lg mb-6 font-roboto">
+                  {item.description}
+                </p>
+                <div className="banner__details flex justify-end items-center mb-8">
+                  <p className="banner__price text-2xl font-extrabold mr-8 font-philosopher">
+                    ${item.price.toFixed(2)}
+                  </p>
+                  <div className="banner__rating flex items-center">
                     {[...Array(5)].map((_, i) => (
                       <span key={i}>
                         {i + 1 <= Math.floor(item.rating) ? (
-                          <FaStar className="filled" />
+                          <FaStar className="filled text-yellow-500" />
                         ) : i < item.rating ? (
-                          <CiStar className="half-filled" />
+                          <CiStar className="half-filled text-yellow-500" />
                         ) : (
-                          <CiStar />
+                          <CiStar className="text-gray-400" />
                         )}
                       </span>
                     ))}
-                    <span className="banner__rating-number">({item.rating.toFixed(1)})</span>
+                    <span className="banner__rating-number ml-2 text-white text-sm">
+                      ({item.rating.toFixed(1)})
+                    </span>
                   </div>
-
                 </div>
-                <div className="banner__buttons">
-                  <button className="banner__button banner__button--cart">
-                    <ShoppingCart size={20} />
+                <div className="banner__buttons flex justify-end gap-4">
+                  <button className="banner__button banner__button--cart flex items-center justify-center px-6 py-3 rounded-full text-white bg-orange-500 hover:bg-orange-600 transition-all duration-300 font-roboto">
+                    <ShoppingCart size={20} className="mr-2" />
                     Add To Cart
                   </button>
-                  <button className="banner__button banner__button--info">
-                    <Info size={20} />
+                  <button className="banner__button banner__button--info flex items-center justify-center px-6 py-3 rounded-full text-white border-2 border-white hover:bg-white hover:bg-opacity-10 transition-all duration-300 font-roboto">
+                    <Info size={20} className="mr-2" />
                     Food Details
                   </button>
                 </div>

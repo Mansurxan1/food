@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
-import "./Navbar.scss";
 import { useCart } from "@/CartContext/CartContext";
 import logo from "@/assets/images/logo.jpg";
 import { Link, useLocation } from "react-router-dom";
@@ -37,28 +36,30 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`nav ${isScrolled ? "scrolled" : ""}`}>
-      <div className="container">
-        <Link to="/" className="nav__logo">
-          <img src={logo} alt="Food Logo" />
+    <nav className={`fixed top-0 left-0 right-0 z-50 bg-black p-2 bg-opacity-50 shadow-md ${isScrolled ? "scrolled" : ""}`}>
+      <div className="container mx-auto flex items-center justify-between px-4 py-2">
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Food Logo" className="rounded-full h-20 w-auto" />
         </Link>
-        <div className="nav__links">
+        <div className="hidden sm:flex gap-8 items-center">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`nav__link ${currentPath === link.path ? "active" : ""}`}
+              className={`text-lg transition-colors duration-300 ${currentPath === link.path ? "font-semibold text-orange-600" : "text-white hover:text-orange-600"}`}
             >
               {link.label}
             </Link>
           ))}
         </div>
-        <div className="nav__right">
-          <Link to="/basket" className={`nav__right-cart ${currentPath === "/basket" ? "active" : ""}`}>
-            <ShoppingCart size={20}/>
-            {totalItems > 0 && <span>{totalItems}</span>}
+        <div className="flex items-center gap-2">
+          <Link to="/basket" className={`relative p-2  ${currentPath === "/basket" ? "text-orange-600" : "text-white"}`}>
+            <ShoppingCart size={20} />
+            {totalItems > 0 && <span className="absolute top-[-5px] right-[-5px] bg-orange-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">{totalItems}</span>}
           </Link>
-          <button className="nav__right-btn">Booking Now</button>
+          <button className="bg-orange-600 text-white py-2 px-4 rounded-md text-lg transition-colors duration-300 hover:bg-orange-700">
+            Booking Now
+          </button>
         </div>
       </div>
     </nav>
