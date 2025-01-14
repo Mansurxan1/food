@@ -8,6 +8,7 @@ import Menu from '../pages/MenuPage';
 import MenuId from '../pages/MenuId';
 import Cart from '../pages/Cart';
 import MobileNav from '../Components/MobileNav';
+import Contact from '../pages/Contact';
 
 const Router = () => {
   console.log("Router is rendering...");
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path='/menu' element={<Menu />}/> 
         <Route path='/menu/:id' element={<MenuId />} />
         <Route path='/basket' element={<Cart />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <MobileNav/>
       <Footer />

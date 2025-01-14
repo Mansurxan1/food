@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react-swc'
 import {URL, fileURLToPath} from "url"
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    include: ["@mui/material", "@mui/icons-material", "@emotion/react", "@emotion/styled"],
+  },
   plugins: [react()],
   resolve:{
     alias:[

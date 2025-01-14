@@ -9,6 +9,15 @@ module.exports = {
         roboto: ['Roboto'],
         philosopher: ['Philosopher'],
       },
+      animation: {
+        spinOnce: 'spinOnce 2s ease-in-out',
+      },
+      keyframes: {
+        spinOnce: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(360deg)' },
+        },
+      },
     },
   },
   plugins: [],
