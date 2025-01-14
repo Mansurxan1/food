@@ -37,7 +37,6 @@ const Contact = () => {
       setIsSubmitting(false);
       return;
     }
-
     try {
       const response = await axios.post(
         `https://api.telegram.org/bot${botToken}/sendMessage`,

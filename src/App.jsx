@@ -1,12 +1,12 @@
-import { CartProvider } from './CartContext/CartContext'
+import { FoodProvider } from './CartContext/Food'
 import Router from './router/Router'
 
 
 const App = () => {
   return (
-    <CartProvider>
+    <FoodProvider>
       <Router />
-    </CartProvider>
+    </FoodProvider>
   )
 }
 

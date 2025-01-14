@@ -26,7 +26,12 @@
   list-style: none;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 body{
+  overflow-x: hidden;
   font-family: "Roboto";
   font-weight: 400;
 }
